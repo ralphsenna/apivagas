@@ -27,28 +27,25 @@ export default function BarraBusca({placeHolder, dados, campoChave, campoBusca, 
     const [dadosLista, setDadosLista] = useState(dados); //dados utilizados para exibir o resultado
     const [itemSelecionado, setItemSelecionado] = useState(false);
 
-    function filtrarResultado() {
+    function filtrarResultado() 
+    {
         //exige que o termo da busca seja conhecido e que
         //esse termo seja utilizado como critério de seleção
         setDadosLista(dados.filter((item) => {
             return termoBusca.length > 1 ? item[campoBusca].toLowerCase().includes(termoBusca.toLowerCase()) : false
-        }
-        )
-        );
+        }));
         let componenteResultado = document.querySelector('[data-resultado]');
-        if (dadosLista.length > 0) {
+        if (dadosLista.length > 0)
             componenteResultado.style.display = 'block';
-        }
-        else {
+        else
             componenteResultado.style.display = "none";
-        }
-
     }
 
     return (
         <Container>
             <div className='barra'>
-                <svg xmlns="http://www.w3.org/2000/svg"
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
@@ -65,19 +62,22 @@ export default function BarraBusca({placeHolder, dados, campoChave, campoBusca, 
                     onChange={e => {
                         setTermoBusca(e.target.value.toLowerCase());
                         filtrarResultado();
-                        if (!itemSelecionado) {
+                        if (!itemSelecionado) 
+                        {
                             //esse atribuito é utilizado pelo HTML5 para verificar
                             //se os elementos do formulário estão válidos ou não
                             e.target.setAttribute('aria-invalid', true);
                             e.target.setCustomValidity('erro');
                         }
-                        else {
+                        else 
+                        {
                             e.target.removeAttribute('aria-invalid');
                             e.target.setCustomValidity("");
                         }
                     }}
                 ></Form.Control>
-                <svg xmlns="http://www.w3.org/2000/svg"
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"

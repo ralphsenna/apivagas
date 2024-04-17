@@ -29,10 +29,11 @@ CREATE TABLE Vaga(
 );
 
 CREATE TABLE Cadidato_Vaga(
+    ins_codigo INT AUTO_INCREMENT,
     can_codigo INT,
     vaga_codigo INT,
     ins_data DATE NOT NULL,
-    PRIMARY KEY(can_codigo, vaga_codigo),
+    PRIMARY KEY(ins_codigo, can_codigo, vaga_codigo),
     FOREIGN KEY(can_codigo) REFERENCES Candidato(can_codigo),
     FOREIGN KEY(vaga_codigo) REFERENCES Vaga(vaga_codigo)
 );
