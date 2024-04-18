@@ -4,8 +4,6 @@ export default function TabelaInscricoes(props)
 {
     return (
         <div>
-            <h1>Tabela de Incriçõess</h1>
-            <br/>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -18,17 +16,17 @@ export default function TabelaInscricoes(props)
                 </thead>
                 <tbody>
                     {
-                        props.listaIncricoes.map((inscricao) => 
+                        props.listaInscricoes!==undefined && props.listaInscricoes.map((inscricao) => 
                         {
                             return (
                                 <tr key={inscricao.codigo}>
                                     <td>{inscricao.codigo}</td>
                                     <td>{inscricao.candidato.nome}</td>
-                                    <td>{inscricao.vaga.nome}</td>
-                                    <td>{inscricao.dataInscricao}</td>
+                                    <td>{inscricao.vaga.cargo}</td>
+                                    <td>{inscricao.dataInscricao.split('-').reverse().join('/')}</td>
                                     <td>
                                         <Button variant="danger" onClick={() => {
-                                            if (window.confirm("Deseja realmente excluir a incricao do candidato " + inscricao.candidato.nome + " para vaga de " + inscricao.vaga.nome + "?"))
+                                            if (window.confirm("Deseja realmente excluir a incricao do candidato " + inscricao.candidato.nome + " para vaga de " + inscricao.vaga.cargo + "?"))
                                                 props.excluirInscricao(inscricao)
                                             }}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

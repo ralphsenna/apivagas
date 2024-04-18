@@ -76,29 +76,32 @@ export default class InscricaoCtrl
     excluir(requisicao, resposta)
     {
         resposta.type('application/json');
-        let codigo = requisicao.params.codigo;
-        if (codigo)
+        if ((requisicao.method==='DELETE') && requisicao.is('application/json')) 
         {
-            const inscricao = new Inscricao();
-            inscricao.excluir(codigo).then(() => {
-                resposta.status(200).json({
-                    "status": true,
-                    "mensagem": "Inscrição excluída com sucesso!"
+            const dados = requisicao.body;
+            if (dados.codigo) 
+            {
+                const inscricao = new Inscricao(dados.codigo);
+                inscricao.excluir().then(() => {
+                    resposta.status(200).json({
+                        "status": true,
+                        "mensagem": "Inscrição excluída com sucesso!"
+                    });
+                })
+                .catch((erro) => {
+                    resposta.status(500).json({
+                        "status": false,
+                        "mensagem": "Erro ao excluir inscrição: " + erro.message
+                    });
                 });
-            })
-            .catch((erro) => {
-                resposta.status(500).json({
+            }
+            else 
+            {
+                resposta.status(400).json({
                     "status": false,
-                    "mensagem": "Erro ao excluir inscrição: " + erro.message
+                    "mensagem": "Por favor, informe o código da inscrição a ser excluída!"
                 });
-            });
-        }
-        else 
-        {
-            resposta.status(400).json({
-                "status": false,
-                "mensagem": "Por favor, informe o código da inscrição a ser excluída!"
-            });
+            }
         }
     }
 }

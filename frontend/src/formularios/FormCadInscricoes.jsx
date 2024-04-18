@@ -4,7 +4,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 export default function FormCadInscricoes(props)
 {   
     const [validado, setValidado] = useState(true);
-    const [inscricao, setInscricao] = useState(props.inscricaoVazia);
+    const [inscricao, setInscricao] = useState(props.inscricao);
 
     function manipularMudanca(evento)
     {

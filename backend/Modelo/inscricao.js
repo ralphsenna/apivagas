@@ -1,3 +1,5 @@
+import InscricaoDAO from "../Persistencia/inscricaoDAO.js"
+
 export default class Inscricao
 {
     #codigo
@@ -48,5 +50,34 @@ export default class Inscricao
     set dataInscricao(novaDataInscricao)
     {
         this.#dataInscricao = novaDataInscricao;
+    }
+
+
+    toJSON()
+    {
+        return {
+            codigo: this.codigo,
+            candidato: this.candidato,
+            vaga: this.vaga,
+            dataInscricao: this.dataInscricao
+        };
+    }
+
+    async gravar()
+    {
+        const inscricaoDAO = new InscricaoDAO();
+        return await inscricaoDAO.gravar(this);
+    }
+
+    async consultar(termo)
+    {
+        const inscricaoDAO = new InscricaoDAO();
+        return await inscricaoDAO.consultar(termo);
+    }
+
+    async excluir()
+    {
+        const inscricaoDAO = new InscricaoDAO();
+        return await inscricaoDAO.excluir(this);
     }
 }

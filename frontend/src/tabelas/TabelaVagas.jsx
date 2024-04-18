@@ -23,7 +23,7 @@ export default function TabelaVagas(props)
                                 <tr key={vaga.codigo}>
                                     <td>{vaga.codigo}</td>
                                     <td>{vaga.cargo}</td>
-                                    <td>{vaga.salario}</td>
+                                    <td>{"R$ " + vaga.salario}</td>
                                     <td>{vaga.cidade}</td>
                                     <td>{vaga.uf}</td>
                                     <td>{vaga.quantidade}</td>

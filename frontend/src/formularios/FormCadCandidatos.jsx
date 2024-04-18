@@ -9,14 +9,7 @@ export default function FormCadCandidatos(props)
     function manipularMudanca(evento) 
     {
         const componente = evento.currentTarget;
-        if (evento.target.type==='checkbox')
-        {
-            setCandidato(prevState => ({
-                ...prevState,
-                [componente.name]: componente.checked ? componente.value : "",
-            }));
-        }
-        else if (evento.target.type==='radio')
+        if (evento.target.type==='radio')
         {
             setCandidato(prevState => ({
                 ...prevState,
@@ -201,70 +194,75 @@ export default function FormCadCandidatos(props)
             </Row>
             <Row className="mb-3">
                 <Form.Label>Grau de Instrução</Form.Label>
-                <Form.Group as={Col} md="2">
+                <Col md="2">
                     <Form.Label>Ensino Fundamental</Form.Label>
                     <Form.Check
-                        type="checkbox"
+                        required
+                        type="radio"
                         id="ensinoFundamentalCompleto"
                         name="grauInstrucao"
                         label="Completo"
                         value="Ensino Fundamental Completo"
-                        checked={candidato.grauInstrucao === "Ensino Fundamental Completo"}
+                        checked={candidato.grauInstrucao==="Ensino Fundamental Completo"}
                         onChange={manipularMudanca}
                     />
                     <Form.Check
-                        type="checkbox"
+                        required
+                        type="radio"
                         id="ensinoFundamentalIncompleto"
                         name="grauInstrucao"
                         label="Incompleto"
                         value="Ensino Fundamental Incompleto"
-                        checked={candidato.grauInstrucao === "Ensino Fundamental Incompleto"}
+                        checked={candidato.grauInstrucao==="Ensino Fundamental Incompleto"}
                         onChange={manipularMudanca}
                     />
-                </Form.Group>
-                <Form.Group as={Col} md="2">
+                </Col>
+                <Col md="2">
                     <Form.Label>Ensino Médio</Form.Label>
                     <Form.Check
-                        type="checkbox"
+                        required
+                        type="radio"
                         id="ensinoMedioCompleto"
                         name="grauInstrucao"
                         label="Completo"
                         value="Ensino Médio Completo"
-                        checked={candidato.grauInstrucao === "Ensino Médio Completo"}
+                        checked={candidato.grauInstrucao==="Ensino Médio Completo"}
                         onChange={manipularMudanca}
                     />
                     <Form.Check
-                        type="checkbox"
+                        required
+                        type="radio"
                         id="ensinoMedioIncompleto"
                         name="grauInstrucao"
                         label="Incompleto"
                         value="Ensino Médio Incompleto"
-                        checked={candidato.grauInstrucao === "Ensino Médio Incompleto"}
+                        checked={candidato.grauInstrucao==="Ensino Médio Incompleto"}
                         onChange={manipularMudanca}
                     />
-                </Form.Group>
-                <Form.Group as={Col} md="2">
+                </Col>
+                <Col md="2">
                     <Form.Label>Ensino Superior</Form.Label>
                     <Form.Check
-                        type="checkbox"
+                        required
+                        type="radio"
                         id="ensinoSuperiorCompleto"
                         name="grauInstrucao"
                         label="Completo"
                         value="Ensino Superior Completo"
-                        checked={candidato.grauInstrucao === "Ensino Superior Completo"}
+                        checked={candidato.grauInstrucao==="Ensino Superior Completo"}
                         onChange={manipularMudanca}
                     />
                     <Form.Check
-                        type="checkbox"
+                        required
+                        type="radio"
                         id="ensinoSuperiorIncompleto"
                         name="grauInstrucao"
                         label="Incompleto"
                         value="Ensino Superior Incompleto"
-                        checked={candidato.grauInstrucao === "Ensino Superior Incompleto"}
+                        checked={candidato.grauInstrucao==="Ensino Superior Incompleto"}
                         onChange={manipularMudanca}
                     />
-                </Form.Group>
-                {/* {grauInstrucaoInvalido && <div className="invalid-feedback d-block">Por favor, selecione pelo menos um grau de instrução.</div>} */}
+                </Col>
             </Row>
             <Row className="mb-3">
                 <Form.Group as={Col} md="3">
@@ -322,40 +320,43 @@ export default function FormCadCandidatos(props)
                 </Form.Group>
             </Row>
             <Row className="mb-3">
-                <Form.Group as={Col} md="2">
-                    <Form.Label>Estado Civil</Form.Label>
+                <Form.Label>Estado Civil</Form.Label>
+                <Col md="2">
                     <Form.Check
                         required
                         type="radio"
                         id="casado"
                         name="estadoCivil"
-                        label="Casado"
-                        value="Casado"
-                        checked={candidato.estadoCivil === "Casado"}
+                        label="Casado(a)"
+                        value="Casado(a)"
+                        checked={candidato.estadoCivil==="Casado(a)"}
                         onChange={manipularMudanca}
                     />
+                </Col>
+                <Col md="2">
                     <Form.Check
                         required
                         type="radio"
                         id="solteiro"
                         name="estadoCivil"
-                        label="Solteiro"
-                        value="Solteiro"
-                        checked={candidato.estadoCivil === "Solteiro"}
+                        label="Solteiro(a)"
+                        value="Solteiro(a)"
+                        checked={candidato.estadoCivil==="Solteiro(a)"}
                         onChange={manipularMudanca}
                     />
+                </Col>
+                <Col md="2">
                     <Form.Check
                         required
                         type="radio"
                         id="divorciado"
                         name="estadoCivil"
-                        label="Divorciado"
-                        value="Divorciado"
-                        checked={candidato.estadoCivil === "Divorciado"}
+                        label="Divorciado(a)"
+                        value="Divorciado(a)"
+                        checked={candidato.estadoCivil==="Divorciado(a)"}
                         onChange={manipularMudanca}
                     />
-                </Form.Group>
-                 {/* <Form.Control.Feedback type='invalid'>Por favor, informe o estado civil do candidato.</Form.Control.Feedback> */}
+                </Col>
             </Row>
             <Row className="mb-3">
                 <Form.Group as={Col} md="2">

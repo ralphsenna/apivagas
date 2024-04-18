@@ -8,7 +8,6 @@ rotaInscricao
 .post('/', inscricaoCtrl.gravar)
 .get('/:termo', inscricaoCtrl.consultar)
 .get('/', inscricaoCtrl.consultar)
-.put('/', inscricaoCtrl.alterar)
 .delete('/', inscricaoCtrl.excluir)
 
 export default rotaInscricao;

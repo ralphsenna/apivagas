@@ -11,10 +11,10 @@ export default class CandidatoDAO
             await conexao.beginTransaction();
             try
             {
-                const sql = `INSERT INTO Candidato (ctd_nome, ctd_ctps, ctd_data_nascimento, ctd_cpf, 
-                             ctd_rg, ctd_endereco, ctd_cidade, ctd_uf, ctd_telefone, ctd_email, 
-                             ctd_grau_instrucao, ctd_curso_superior, ctd_titulo_eleitor, ctd_pis, 
-                             ctd_cnh, ctd_estado_civil, ctd_certidao_militar) 
+                const sql = `INSERT INTO Candidato (can_nome, can_ctps, can_data_nascimento, can_cpf, 
+                             can_rg, can_endereco, can_cidade, can_uf, can_telefone, can_email, 
+                             can_grau_instrucao, can_curso_superior, can_titulo_eleitor, can_pis, 
+                             can_cnh, can_estado_civil, can_certidao_militar) 
                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
                 const parametros = [candidato.nome, candidato.ctps, candidato.dataNascimento, candidato.cpf,
                                     candidato.rg, candidato.endereco, candidato.cidade, candidato.uf, 

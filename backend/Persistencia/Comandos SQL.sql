@@ -28,7 +28,7 @@ CREATE TABLE Vaga(
     vaga_quantidade INT NOT NULL
 );
 
-CREATE TABLE Cadidato_Vaga(
+CREATE TABLE Inscricao(
     ins_codigo INT AUTO_INCREMENT,
     can_codigo INT,
     vaga_codigo INT,

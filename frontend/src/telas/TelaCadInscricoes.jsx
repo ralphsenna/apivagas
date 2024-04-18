@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Button, Col, Form } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import BarraBusca from "../componentes/BarraBusca";
 import Pagina from "../templates/Pagina";
 import TabelaInscricoes from "../tabelas/TabelaInscricoes";
-import FormCadInscricoes from "../formularios/FormCadInscricao";
-// import FormCadInscricoes from "../formularios/FormCadInscricoes";
+import FormCadInscricoes from "../formularios/FormCadInscricoes";
 
 const urlCandidato = "http://localhost:4000/candidato";
 const urlVaga = "http://localhost:4000/vaga";
@@ -21,7 +20,7 @@ export default function TelaCadInscricoes(props)
         codigo: "",
         nome: "Nenhuma vaga cadastrada"
     }]);
-    const [listaIncricoes, setListaIncricoes] = useState([]);
+    const [listaInscricoes, setListaInscricoes] = useState([]);
     const inscricaoVazia = {
         codigo: "",
         candidato: {},
@@ -80,7 +79,7 @@ export default function TelaCadInscricoes(props)
         .then(retorno => {
             if (retorno.status) 
             {
-                setListaIncricoes(retorno.listaIncricoes);
+                setListaInscricoes(retorno.listaInscricoes);
             }
             else 
             {
@@ -92,9 +91,9 @@ export default function TelaCadInscricoes(props)
         });
     }
     useEffect(() => {
-        if (candidatoAtual)
+        if (candidatoAtual.codigo!==undefined)
             consultarInscricao(candidatoAtual.codigo);
-        if (!exibirTabela)
+        if (exibirTabela)
         {
             consultarCandidato();
             consultarVaga();
@@ -161,27 +160,30 @@ export default function TelaCadInscricoes(props)
                 <Pagina>
                     <h1>Tela de Inscrições por Candidato</h1>
                     <br/>
-                    <Form.Group as={Col} md="3">
+                    <Row className="mb-3" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <h3>Selecione o Candidato</h3>
-                        <BarraBusca 
-                            placeHolder={""}
-                            dados={listaCandidatos}
-                            campoChave={"codigo"}
-                            campoBusca={"nome"}
-                            funcaoSelecao={setCandidatoAtual}
-                            valor={""} 
-                        />
-                    </Form.Group>
+                        <div style={{ display: 'flex', alignItems: 'center', width: '30%' }}>
+                            <BarraBusca style={{ width: '80%', marginRight: '20px' }}
+                                placeHolder={""}
+                                dados={listaCandidatos}
+                                campoChave={"codigo"}
+                                campoBusca={"nome"}
+                                funcaoSelecao={setCandidatoAtual}
+                                valor={""} 
+                            />
+                        </div>
+                    </Row>
                     <br/>
-                    <h3>Lista de Inscrições</h3>
+                    <h2>Lista de Incrições do Candidato(a) "{candidatoAtual.nome}"</h2>
                     <Button className="mb-3" onClick={() => {
                             setExibirTabela(false);
                         }}>
                         Nova Inscrição
                     </Button>
+                    <br/>
                     <TabelaInscricoes
                         setExibirTabela={setExibirTabela} 
-                        listaIncricoes={listaIncricoes}
+                        listaInscricoes={listaInscricoes}
                         excluirInscricao={excluirInscricao}
                     />
                 </Pagina>
